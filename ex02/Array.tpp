@@ -30,7 +30,7 @@ Array<T>&   Array<T>::operator=(Array const &cpi){
 
 template<typename T>
 T   &Array<T>::operator[](size_t i){
-    if (!array[i])
+    if (i > _size)
         throw Array<T>::OutException();
     return (array[i]);
 }
