@@ -19,13 +19,17 @@ Array<T>::Array(unsigned int n){
 
 template<typename T>
 Array<T>::Array(Array const &cp){
-    *this = cp;
+    _size = cp._size;
+    array = new T(cp._size);
+    for (unsigned int i = 0; i < _size; i++)
+        array[i] = cp.array[i];
 }
 
 template<typename T>
 Array<T>&   Array<T>::operator=(Array const &cpi){
     if (this != &cpi){
-        delete [] array;
+        if (array)
+            delete [] array;
         _size = cpi._size;
         array = new T(cpi._size);
         for (unsigned int i = 0; i < _size; i++)
